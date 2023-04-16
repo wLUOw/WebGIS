@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njnu.picshare.mapper.PictureInfoMapper">
+
+    <!--domain实体类与数据表字段的映射-->
+    <resultMap id="BaseResultMap" type="com.njnu.picshare.domain.PictureInfo">
+        <id property="id" jdbcType="INTEGER" column="id" />
+        <result property="picName" jdbcType="VARCHAR" column="pic_name"/>
+        <result property="longitude" jdbcType="DOUBLE" column="longitude"/>
+        <result property="latitude" jdbcType="DOUBLE" column="latitude"/>
+        <result property="uploadTime" jdbcType="TIMESTAMP" column="upload_time" />
+        <result property="shootTime" jdbcType="TIMESTAMP" column="shoot_time" />
+        <result property="picAttachment" jdbcType="VARCHAR" column="attachment" />
+        <result property="picLocation" jdbcType="VARCHAR" column="pic_location"/>
+    </resultMap>
+    <!--图片基本信息字段-->
+    <sql id="Base_Column_List">
+        id, pic_name, longitude, latitude, upload_time, shoot_time, attachment, ST_AsGeoJson(pic_location) as pic_location
+    </sql>
+
+    <!--插入图片信息-->
+    <!--.............编码练习部分·开始...............-->
+    <insert id="insertPictureInfo" parameterType="com.njnu.picshare.domain.PictureInfo" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO t_picture_info(pic_name, longitude, latitude, upload_time, shoot_time, attachment, pic_location)
+    VALUES (#{picName,jdbcType=INTEGER}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{uploadTime,jdbcType=TIMESTAMP}, #{shootTime,jdbcType=TIMESTAMP}, #{picAttachment,jdbcType=VARCHAR}, ST_GeomFromText(#{picLocation,jdbcType=VARCHAR}, 4326))
+</insert>
+    <!--.............编码练习部分·结束...............-->
+
+    <!--通过区域边界查找图片信息-->
+    <!--.............编码练习部分·开始...............-->
+    <select id="findPictureListByBox" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_picture_info
+        WHERE ST_Contains(ST_MakePolygon(ST_GeomFromText('LINESTRING' || #{geometryBox}, 4326)) , pic_location) = 't'
+    </select>
+    <!--.............编码练习部分·结束...............-->
+
+    <!--通过图片名称查找图片信息-->
+    <!--.............编码练习部分·开始...............-->
+    <select id="findPictureByName" parameterType="STRING" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_picture_info
+        WHERE pic_name = #{pictureName}
+    </select>
+    <!--.............编码练习部分·结束...............-->
+
+    <!--通过图片名称查找图片附言-->
+    <!--.............编码练习部分·开始...............-->
+    <select id="findPictureAttachmet" resultType="STRING">
+    SELECT
+    attachment
+    FROM t_picture_info
+    WHERE pic_name = #{pictureName}
+</select>
+    <!--.............编码练习部分·结束...............-->
+
+    <!--通过id查找图片信息-->
+    <select id="findPictureById" parameterType="INTEGER" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_picture_info
+        WHERE id = #{id}
+    </select>
+
+    <!--通过图片名称删除图片信息-->
+    <delete id="deletePictureFileByName" parameterType="STRING">
+        delete from t_picture_info where pic_name = #{pictureName}
+    </delete>
+</mapper>

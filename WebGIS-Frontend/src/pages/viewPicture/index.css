@@ -1,0 +1,15 @@
+.content{
+  width: 100vw;
+  height: 100vh;
+}
+.imgContent{
+  display: flex;
+  flex-wrap: wrap;
+}
+.item{
+  margin:0 4px 4px 0;
+}
+.item image{
+  width: 100%;
+  height: 100%;
+}

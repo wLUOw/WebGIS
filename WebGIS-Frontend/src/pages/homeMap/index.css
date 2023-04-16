@@ -1,0 +1,74 @@
+.bubbleContent{
+  position: relative;
+}
+.bubble{
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 10px;
+}
+.bubbleContent .imgNum{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  /* transform: translate(-50%,-50%); */
+  width: 50px;
+  height: 46px;
+  text-align: center;
+  color: #fff;
+  text-align: center;
+  /* padding: 8px 10px; */
+  line-height: 46px;
+  font-size: 26px;
+  border-radius: 40%;
+  background-color: red;
+}
+.location{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 60px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  background-color: #025cfa;
+  border-radius: 50%;
+}
+.locationImg{
+  width: 50%;
+  height: 50%;
+}
+.upload{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  color: #ffffff;
+  font-size: 52px;
+  background-color: #025cfa;
+  border-radius: 50%;
+}
+.layer{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 60px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  color: #ffffff;
+  font-size: 52px;
+  background-color: #fff;
+}
+.layerImg{
+  width: 50%;
+  height: 50%;
+}

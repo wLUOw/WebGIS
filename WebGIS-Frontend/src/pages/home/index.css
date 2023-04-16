@@ -1,0 +1,56 @@
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.dwLoading{
+  width: 60px;
+  height: 60px;
+  margin-left:20px;
+  animation: 1.5s wordsLoop linear infinite normal;
+}
+.setUp{
+  width: 100vw;
+  height: 60vh;
+}
+.setUpBackground{
+  width: 100%;
+  height: 46%;
+  background: url(http://jxsiwi-test.oss-cn-shenzhen.aliyuncs.com/20211120/e467c0111fe9e44cdb57294c30f744d1.png);
+  background-size: cover;
+}
+.tip{
+  max-width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+.setUpBtn{
+  width: 200px;
+  padding: 20px;
+  margin: 30px auto 0;
+  border-radius: 30px;
+  box-shadow: 20px 20px 40px 0px rgba(54, 51, 49, 0.3);
+  color: #fff;
+  text-align: center;
+  background-color: #1890ff;
+}
+@keyframes wordsLoop {
+0% {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+}
+50% {
+transform: translateY(-20px) scale(1.2);
+-webkit-transform: translateY(-20px) scale(1.2);
+}
+100% {
+transform: translateY(0) scale(1);
+-webkit-transform: translateY(0) scale(1);
+}
+}
+.dwLoading image{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,22 @@
+.navBar{
+  position: relative;
+  width: 100%;
+  background-color: rgb(238, 236, 236);
+}
+.navBarContent{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 38px;
+}
+.return{
+  width: 20px;
+  height: 20px;
+  border: 5px solid #000;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(45deg)
+}
+.title{
+  padding-left: 16px;
+}

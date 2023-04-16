@@ -1,0 +1,30 @@
+.content{
+  padding: 50px;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  overflow: visible;
+}
+.bubble{
+  position: relative;
+  width: 50%;
+  height: 50%;
+  background-color: #000;
+  overflow: visible;
+}
+.test{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,100%);
+  width:0;
+  height: 0;
+  border-width: 30px 30px 0;
+  border-style: solid;
+  border-color: pink transparent transparent;
+}
+.space {
+   display: inline-block;
+   width: 2rpx;
+   line-height: 1;
+}
